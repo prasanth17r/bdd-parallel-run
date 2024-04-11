@@ -18,5 +18,10 @@ namespace PageRepository
             seleniumHelper.LaunchApp(appUrl);
             seleniumHelper.EnterText(searchItem, SearchBox);
         }
+
+        public void QuitApp()
+        {
+            seleniumHelper.Quit();
+        }
     }
 }

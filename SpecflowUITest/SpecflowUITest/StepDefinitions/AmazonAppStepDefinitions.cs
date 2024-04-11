@@ -7,6 +7,7 @@ namespace SpecflowUITest.StepDefinitions
     [Binding]
     public sealed class AmazonAppStepDefinitions
     {
+        AmazonAppHomePage appHomePage;
         // For additional details on SpecFlow step definitions see https://go.specflow.org/doc-stepdef
 
         [Given("the app is launched")]
@@ -18,7 +19,7 @@ namespace SpecflowUITest.StepDefinitions
             // additional string/Table parameters can be defined on the step definition
             // method. 
             const string APPURL = "https://www.amazon.in/";
-            AmazonAppHomePage appHomePage = new AmazonAppHomePage();
+            appHomePage = new AmazonAppHomePage();
             appHomePage.LaunchAppAndSearchAnItem(APPURL, "Books");
 
         }
@@ -45,6 +46,15 @@ namespace SpecflowUITest.StepDefinitions
             //TODO: implement assert (verification) logic
 
             throw new PendingStepException();
+        }
+
+        [AfterScenario]
+        public void QuitSession()
+        {
+            if(appHomePage != null)
+            {
+                appHomePage.QuitApp();
+            }
         }
     }
 }

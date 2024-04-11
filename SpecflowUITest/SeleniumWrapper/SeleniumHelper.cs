@@ -25,5 +25,9 @@ namespace SeleniumWrapper
             element.SendKeys(text);
         }
 
+        public void Quit()
+        {
+            driverObj.Quit();
+        }
     }
 }
